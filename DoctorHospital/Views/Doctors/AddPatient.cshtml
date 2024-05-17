@@ -1,0 +1,15 @@
+﻿@model DoctorHospital.Models.PatientDoctor
+@{
+    ViewBag.Title = "AddPatient";
+}
+
+<h2>AddPatient:</h2>
+
+@using (Html.BeginForm())
+            {
+             
+             @Html.DropDownListFor(model=>model.PatientId,new SelectList(Model.patients,"id","name"))         
+             @Html.HiddenFor(model=>model.DoctorId)
+            <button>Додади</button>
+            }
+

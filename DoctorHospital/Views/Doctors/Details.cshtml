@@ -1,0 +1,49 @@
+﻿@model DoctorHospital.Models.Doctor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Doctor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Hospital @Html.DisplayNameFor(model => model.hospital.name)
+        </dt>
+
+        <dd>
+            @ViewBag.Hospital
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.patients):
+        </dt>
+
+        <dd>
+            <ul>
+                @{
+                    foreach (var item in Model.patients)
+                    {
+                    <li>@Html.ActionLink(item.name, "Details", "Patients", new { id = item.id }, new { @class = "btn-link" })</li>
+                    }
+                }
+            </ul>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Add patient", "AddPatient", new { id = Model.Id })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
